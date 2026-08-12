@@ -35,6 +35,12 @@ jobs:
           PULL_REQUESTS_FILE: ${{ steps.pull_requests.outputs.pull_requests_file }}
           CURRENT_VERSION: ${{ github.ref_name }}
         run: |
+          git --version
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          git status
+          git tag
+          git describe
           echo $PWD
           if [ ! -d ".git" ]; then
             echo "Not in  a git folder"
