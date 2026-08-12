@@ -36,23 +36,27 @@ jobs:
           CURRENT_VERSION: ${{ github.ref_name }}
         run: |
           LAST_VERSION=$(git tag --sort=-creatordate | sed -n '2p')
-          info_file="release.md"
-          echo "## What's Changed" > $info_file
+          FOLDER="dist"
+          if [ ! -d "$FOLDER" ]; then
+            mkdir "$FOLDER"
+          fi
+          INFO_FILE="${FOLDER}/release.md"
+          echo "## What's Changed" > $INFO_FILE
           if [ -z "$PULL_REQUESTS_FILE" ] || [ ! -f "$PULL_REQUESTS_FILE" ]; then
-            echo "No change via Pull Request. Change log should be done manually." >> $info_file
+            echo "No change via Pull Request. Change log should be done manually." >> $INFO_FILE
             exit 0
           fi
           
           titles=$(jq -r '.[] | "- " + .title + " (Pr: #" + (.number | tostring) + " by @" + .user.login + ")"' "$PULL_REQUESTS_FILE"| sort | uniq)
           
           if [ -z "$titles" ]; then
-            echo "No change via Pull Request. Change log should be done manually." >> $info_file
+            echo "No change via Pull Request. Change log should be done manually." >> $INFO_FILE
           else
             
             echo "$titles" | while read -r title; do
-              echo "$title" >> $info_file
+              echo "$title" >> $INFO_FILE
             done
           fi
-          echo "\n**Full Changelog**: https://github.com/Houssame-EA/IsotopeTrack/compare/${LAST_VERSION}...${CURRENT_VERSION}" >> $info_file
+          echo "\n**Full Changelog**: https://github.com/Houssame-EA/IsotopeTrack/compare/${LAST_VERSION}...${CURRENT_VERSION}" >> $INFO_FILE
 
-          cat $info_file
+          cat $INFO_FILE
