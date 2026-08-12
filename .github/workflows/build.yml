@@ -35,6 +35,10 @@ jobs:
           PULL_REQUESTS_FILE: ${{ steps.pull_requests.outputs.pull_requests_file }}
           CURRENT_VERSION: ${{ github.ref_name }}
         run: |
+          echo $PWD
+          if [ ! -d ".git" ]; then
+            echo "Not in  a git folder"
+          fi
           echo "tags : $(git tag --sort=-creatordate)"
           LAST_VERSION=$(git tag --sort=-creatordate | sed -n '2p')
           FOLDER="dist"
