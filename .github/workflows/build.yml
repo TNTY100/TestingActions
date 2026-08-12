@@ -25,12 +25,27 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Get merged pull requests
+        uses: VanOns/get-merged-pull-requests-action@v1
+        id: pull_requests
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print merged pull requests
+        env:
+          PULL_REQUESTS_FILE: ${{ steps.pull_requests.outputs.pull_requests_file }}
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          if [ -z "$PULL_REQUESTS_FILE" ] || [ ! -f "$PULL_REQUESTS_FILE" ]; then
+            echo "No pull requests were merged between the current and previous tag."
+            exit 0
+          fi
+          
+          titles=$(jq -r '.[].title' "$PULL_REQUESTS_FILE")
+      
+          if [ -z "$titles" ]; then
+            echo "No pull requests were merged between the current and previous tag."
+          else
+            echo "The following pull requests were merged between the current and previous tag:"
+            echo "$titles" | while read -r title; do
+              echo "- $title"
+            done
+          fi
