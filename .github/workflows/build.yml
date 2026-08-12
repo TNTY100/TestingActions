@@ -39,6 +39,8 @@ jobs:
             exit 0
           fi
           
+          cat $PULL_REQUESTS_FILE
+          
           titles=$(jq -r '.[].title' "$PULL_REQUESTS_FILE")
       
           if [ -z "$titles" ]; then
