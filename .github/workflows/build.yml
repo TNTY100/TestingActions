@@ -41,13 +41,13 @@ jobs:
           
           cat $PULL_REQUESTS_FILE
           
-          titles=$(jq -r '.[].title' "$PULL_REQUESTS_FILE")
+          titles=$(jq -r '.[] | "- " + .title + " (Pr: #" + (.number | tostring) + " by @" + .user.login + ")"' "$PULL_REQUESTS_FILE"| sort | uniq)
       
           if [ -z "$titles" ]; then
             echo "No pull requests were merged between the current and previous tag."
           else
             echo "The following pull requests were merged between the current and previous tag:"
             echo "$titles" | while read -r title; do
-              echo "- $title"
+              echo "$title"
             done
           fi
