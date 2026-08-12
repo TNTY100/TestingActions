@@ -36,7 +36,7 @@ jobs:
           CURRENT_VERSION: ${{ github.ref_name }}
         run: |
           LAST_VERSION=$(git tag --sort=-creatordate | sed -n '2p')
-          info_file="dist/release.md"
+          info_file="release.md"
           echo "## What's Changed" > $info_file
           if [ -z "$PULL_REQUESTS_FILE" ] || [ ! -f "$PULL_REQUESTS_FILE" ]; then
             echo "No change via Pull Request. Change log should be done manually." >> $info_file
