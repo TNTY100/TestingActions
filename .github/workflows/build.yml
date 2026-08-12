@@ -33,21 +33,23 @@ jobs:
       - name: Print merged pull requests
         env:
           PULL_REQUESTS_FILE: ${{ steps.pull_requests.outputs.pull_requests_file }}
+          CURRENT_VERSION: ${{ github.ref_name }}
         run: |
+          info_file="dist/release.md"
+          echo "## What's Changed" > $info_file
           if [ -z "$PULL_REQUESTS_FILE" ] || [ ! -f "$PULL_REQUESTS_FILE" ]; then
-            echo "No pull requests were merged between the current and previous tag."
+            echo "No change via Pull Request. Change log should be done manually." >> $info_file
             exit 0
           fi
           
-          cat $PULL_REQUESTS_FILE
-          
           titles=$(jq -r '.[] | "- " + .title + " (Pr: #" + (.number | tostring) + " by @" + .user.login + ")"' "$PULL_REQUESTS_FILE"| sort | uniq)
-      
+          
           if [ -z "$titles" ]; then
-            echo "No pull requests were merged between the current and previous tag."
+            echo "No change via Pull Request. Change log should be done manually." >> $info_file
           else
-            echo "The following pull requests were merged between the current and previous tag:"
+            
             echo "$titles" | while read -r title; do
-              echo "$title"
+              echo "$title" >> $info_file
             done
           fi
+          echo "\n**Full Changelog**: https://github.com/Houssame-EA/IsotopeTrack/compare/v1.10.9...v1.10.10" >> $info_file
