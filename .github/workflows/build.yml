@@ -36,7 +36,7 @@ jobs:
           CURRENT_VERSION: ${{ github.ref_name }}
         run: |
           # TODO: Remove the following line
-          git tag --sort=-creatordate
+          echo "tags : $(git tag --sort=-creatordate)"
           LAST_VERSION=$(git tag --sort=-creatordate | sed -n '2p')
           FOLDER="dist"
           if [ ! -d "$FOLDER" ]; then
