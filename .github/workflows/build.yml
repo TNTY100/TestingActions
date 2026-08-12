@@ -35,6 +35,7 @@ jobs:
           PULL_REQUESTS_FILE: ${{ steps.pull_requests.outputs.pull_requests_file }}
           CURRENT_VERSION: ${{ github.ref_name }}
         run: |
+          LAST_VERSION=$(git tag --sort=-creatordate | sed -n '2p')
           info_file="dist/release.md"
           echo "## What's Changed" > $info_file
           if [ -z "$PULL_REQUESTS_FILE" ] || [ ! -f "$PULL_REQUESTS_FILE" ]; then
@@ -52,4 +53,6 @@ jobs:
               echo "$title" >> $info_file
             done
           fi
-          echo "\n**Full Changelog**: https://github.com/Houssame-EA/IsotopeTrack/compare/v1.10.9...v1.10.10" >> $info_file
+          echo "\n**Full Changelog**: https://github.com/Houssame-EA/IsotopeTrack/compare/${LAST_VERSION}...${CURRENT_VERSION}" >> $info_file
+
+          cat $info_file
