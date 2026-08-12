@@ -4,6 +4,8 @@ This file is to be modified and will be compiled by an action
 
 This is a part to test yay
 
+Test 4
+
 Test 1
 
 Test 2
