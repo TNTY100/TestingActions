@@ -10,6 +10,7 @@ jobs:
         uses: actions/checkout@v6.1.0
         with:
           fetch-depth: 0
+          ref: main
       
       - name: Changelog Updater
         # You may pin to the exact commit or the version.
