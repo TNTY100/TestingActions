@@ -79,6 +79,10 @@ jobs:
           fi
           
           sed -i -e "6{r $TEMP_LOG_FILE" -e "; N}" $LOG_FILE
+
+          git config user.name "Github Action"
+          git config user.email "<>"
+
           git add $LOG_FILE
           git commit -m "Added change log"
           git push
