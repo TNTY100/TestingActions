@@ -5,6 +5,12 @@ All notable changes to IsotopeTrack are documented here.
 
 ---
 
+## v0.0.17 - 2026-08-13
+
+### What’s Changed
+
+* No changes
+
 ## v0.0.15 - 2026-08-13
 
 ### What’s Changed
