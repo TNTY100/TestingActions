@@ -76,8 +76,6 @@ jobs:
 
           if [ ! -e $LOG_FILE ]; then
             echo -e "# Changelog\n\nAll notable changes to IsotopeTrack are documented here.\n\n---\n" > $LOG_FILE
-            cat $TEMP_LOG_FILE >> $LOG_FILE
-            exit 0
           fi
           
           sed -i -e "6{r $TEMP_LOG_FILE" -e "; N}" $LOG_FILE
