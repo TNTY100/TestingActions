@@ -70,11 +70,11 @@ jobs:
         run: |
           echo $LOG_FILE
           FOLDER=$(dirname $LOG_FILE)
-          if [ ! -D $FOLDER ]; then
+          if [ ! -d $FOLDER ]; then
             mkdir $FOLDER
           fi
 
-          if [ ! -E $LOG_FILE ]; then
+          if [ ! -e $LOG_FILE ]; then
             echo -e "# Changelog\n\nAll notable changes to IsotopeTrack are documented here.\n\n---\n" > $LOG_FILE
             cat $TEMP_LOG_FILE >> $LOG_FILE
             exit 0
