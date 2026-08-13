@@ -68,6 +68,7 @@ jobs:
       
       - name: Use temp changelog file 
         run: |
+          echo $LOG_FILE
           FOLDER=$(dirname $LOG_FILE)
           if [ ! -D $FOLDER ]; then
             mkdir $FOLDER
