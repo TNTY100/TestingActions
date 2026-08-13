@@ -40,8 +40,10 @@ No change via Pull Request. Change log should be done manually.
 
 No change via Pull Request. Change log should be done manually.
 
-## — 2026-08-13
+---
+##  — 2026-08-13
 
+>>>>>>> main
 - Update ToBeCompiled.txt - Test3 (Pr: #4 by @TNTY100)
 - Update ToBeCompiled.txt - Test4 (Pr: #5 by @TNTY100)
 - Update ToBeCompiled.txt - Test5 (Pr: #7 by @TNTY100)
