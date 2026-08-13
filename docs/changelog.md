@@ -5,6 +5,18 @@ All notable changes to IsotopeTrack are documented here.
 
 ---
 
+## v0.0.17 - 2026-08-13
+
+### What’s Changed
+
+* No changes
+
+## v0.0.15 - 2026-08-13
+
+### What’s Changed
+
+* Dev (#17) @TNTY100
+
 ## v0.0.14 - 2026-08-13
 
 ### What’s Changed
@@ -40,10 +52,13 @@ No change via Pull Request. Change log should be done manually.
 
 No change via Pull Request. Change log should be done manually.
 
----
-##  — 2026-08-13
 
->>>>>>> main
+---
+
+## — 2026-08-13
+
+> > > > > > > main
+
 - Update ToBeCompiled.txt - Test3 (Pr: #4 by @TNTY100)
 - Update ToBeCompiled.txt - Test4 (Pr: #5 by @TNTY100)
 - Update ToBeCompiled.txt - Test5 (Pr: #7 by @TNTY100)
