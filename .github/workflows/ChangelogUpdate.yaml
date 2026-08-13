@@ -6,7 +6,10 @@ jobs:
   update_changelog:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout
+        uses: actions/checkout@v6.1.0
+        with:
+          fetch-depth: 0
       
       - name: Changelog Updater
         # You may pin to the exact commit or the version.
