@@ -65,10 +65,11 @@ jobs:
           echo -e "\n\n**Full Changelog**: https://github.com/Houssame-EA/IsotopeTrack/compare/${LAST_VERSION}...${CURRENT_VERSION}" >> $TEMP_LOG_FILE
 
           cat $TEMP_LOG_FILE
+      
       - name: Use temp changelog file 
         run: |
           FOLDER=$(dirname $LOG_FILE)
-          if [ ! -E $FOLDER ]; then
+          if [ ! -D $FOLDER ]; then
             mkdir $FOLDER
           fi
 
