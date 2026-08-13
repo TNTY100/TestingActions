@@ -1,6 +1,9 @@
 on:
   release:
     types: [published]
+    
+permissions:
+  contents: write
 
 jobs:
   update_changelog:
@@ -22,9 +25,8 @@ jobs:
           # Defaults to `CHANGELOG.md`. Path to CHANGELOG.md file.
           path-to-changelog: docs/changelog.md
           
-
       - name: Commit CHANGELOG
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Update CHANGELOG
-          changelog-body: docs/changelog.md
+          
