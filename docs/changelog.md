@@ -4,6 +4,12 @@ All notable changes to IsotopeTrack are documented here.
 
 ---
 ##  — 2026-08-13
+- Dev (Pr: #12 by @TNTY100)
+- Update ToBeCompiled.txt (Pr: #11 by @TNTY100)
+
+
+**Full Changelog**: https://github.com/Houssame-EA/IsotopeTrack/compare/v0.0.10...
+##  — 2026-08-13
 No change via Pull Request. Change log should be done manually.
 ##  — 2026-08-13
 - Update ToBeCompiled.txt - Test6 (Pr: #9 by @TNTY100)
