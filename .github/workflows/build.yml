@@ -85,6 +85,7 @@ jobs:
           git config user.name "Github Action"
           git config user.email "<>"
 
+          git checkout main
           git add $LOG_FILE
           git commit -m "Added change log"
           git push
